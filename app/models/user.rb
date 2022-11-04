@@ -8,5 +8,9 @@ class User < ApplicationRecord
   
   def jwt_payload
     super
-  end       
+  end 
+
+  has_many :reservations, foreign_key: :user_id, dependent: :delete_all
+  validates :name, presence: true
+
 end
