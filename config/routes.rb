@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  get '/current_user_details', to: 'current_user#index'
+
   namespace :api do
     namespace :v1 do
       resources :reservations, only: [:index, :create, :destroy, :show]
