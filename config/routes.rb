@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-<<<<<<< HEAD
 
   get '/current_user_details', to: 'current_user#index'
 
@@ -13,6 +12,4 @@ Rails.application.routes.draw do
       resources :doctors, only: [:index, :create, :destroy, :show]
     end
   end
-=======
->>>>>>> dev
 end
