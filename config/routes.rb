@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  }
-
+  resources :doctors
+  resources :users
   get '/current_user_details', to: 'current_user#index'
 
   namespace :api do
