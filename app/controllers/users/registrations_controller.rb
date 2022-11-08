@@ -12,8 +12,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       }, status: :ok
     else
       render json: {
-        status: { message: 'User could not be sign up', 
-        error: resource.errors.full_message }, status: :Unprocessable 
+        status: { message: 'User could not be sign up',
+        error: resource.errors.full_message }, status: :Unprocessable_entity 
       }
     end
   end
