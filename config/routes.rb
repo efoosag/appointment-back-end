@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :doctors
   resources :users
-  post 'login', to: 'authentication#login'
+  post '/login', to: 'authentication#login'
   
   namespace :api do
     namespace :v1 do
