@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  }
-
-  get '/current_user_details', to: 'current_user#index'
-
+  resources :users
+  post '/login', to: 'authentication#login'
+  
   namespace :api do
     namespace :v1 do
       resources :reservations, only: [:index, :create, :destroy, :show]
