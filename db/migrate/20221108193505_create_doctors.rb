@@ -4,7 +4,7 @@ class CreateDoctors < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :title
       t.string :biography
-      t.string :photo, null: false 
+      t.string :photo
 
       t.timestamps
     end
