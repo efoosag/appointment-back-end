@@ -28,7 +28,7 @@ class Api::V1::ReservationsController < ApplicationController
 
   private
 
-  def set_reservation
+  def set_reservation  
     @reservation = current_user.reservations.find(params[:id])
   end
 

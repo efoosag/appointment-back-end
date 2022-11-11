@@ -2,11 +2,14 @@ class Api::V1::DoctorsController < ApplicationController
   before_action :set_doctor, only: %i[show destroy]
   def index
     @doctors = Doctor.all
-    render json: @doctors
+    # render json: @doctors
+    render json: DoctorSerializer.new(@doctors).serializable_hash.to_json
   end
 
   def show
-    render json: @doctor, status: :ok
+    @doctor = Doctor.find_by([:id])
+    # render json: @doctor, status: :ok
+    render json: DoctorSerializer.new(@doctor).serializable_hash.to_json
   end
 
   def create

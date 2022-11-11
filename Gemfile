@@ -10,6 +10,7 @@ gem "rails", "~> 7.0.4"
 gem 'pg'
 gem 'devise'
 gem 'devise-jwt'
+gem 'jsonapi-serializer'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
