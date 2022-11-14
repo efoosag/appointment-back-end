@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  before_action :authenticate
+  # before_action :authenticate
   
   def authenticate
     if request.headers["Authorization"]
@@ -9,8 +9,8 @@ class ApplicationController < ActionController::API
         payload = decoded_token.first
         user_id = payload["user_id"]
         @user = User.find(user_id)
-      rescue 
-        render json: { message: "Error: #{excrption}" }, status: :forbidden
+      rescue => exception
+        render json: { message: "Error: #{exception}" }, status: :forbidden
       end  
     else 
       render json: { message: "No Authorization Header Sent" }, status: :forbidden 
