@@ -13,7 +13,8 @@ class DoctorsControllerTest < ActionDispatch::IntegrationTest
   test 'should create doctor' do
     assert_difference('Doctor.count') do
       post doctors_url,
-           params: { doctor: { biography: @doctor.biography, name: @doctor.name, photo: @doctor.photo, title: @doctor.title } }, as: :json
+           params: { doctor: { biography: @doctor.biography, name: @doctor.name,
+                               photo: @doctor.photo, title: @doctor.title } }, as: :json
     end
 
     assert_response :created
