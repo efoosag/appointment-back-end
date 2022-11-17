@@ -27,7 +27,7 @@ class DoctorsControllerTest < ActionDispatch::IntegrationTest
   test 'should update doctor' do
     patch doctor_url(@doctor),
           params: { doctor: { biography: @doctor.biography, name: @doctor.name,
-          photo: @doctor.photo, title: @doctor.title } }, as: :json
+                              photo: @doctor.photo, title: @doctor.title } }, as: :json
     assert_response :success
   end
 
