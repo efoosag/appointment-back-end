@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate, only: [:create]
-  before_action :set_user, only: %i[show update destroy]
-
+ 
   # GET /users
   def index
     @users = User.all
@@ -18,9 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
-      payload = { user_id: @user_id }
-      token = create_token(payload)
+    if @user.save     
       render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
