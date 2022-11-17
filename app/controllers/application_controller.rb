@@ -8,7 +8,7 @@ class ApplicationController < ActionController::API
         decoded_token = JWT.decode(token, secret)
         payload = decoded_token.first
         user_id = payload["user_id"]
-        @user = User.find(user_id)
+        @current_user = User.find(user_id)
       rescue => exception
         render json: { message: "Error: #{exception}" }, status: :forbidden
       end  

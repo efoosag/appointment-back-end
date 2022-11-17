@@ -1,24 +1,25 @@
 class Api::V1::DoctorsController < ApplicationController
-  before_action :set_doctor, only: %i[show destroy]
+  # before_action :set_doctor, only: %i[show destroy]
+
   def index
-    @doctors = Doctor.all
-    # render json: @doctors
-    render json: DoctorSerializer.new(@doctors).serializable_hash.to_json
+    doctors = Doctor.all
+    render json: DoctorSerializer.new(doctors).serializable_hash.to_json
   end
 
   def show
-    @doctor = Doctor.find_by([:id])
+    doctor = Doctor.find(params[:id])
     # render json: @doctor, status: :ok
-    render json: DoctorSerializer.new(@doctor).serializable_hash.to_json
+    render json: DoctorSerializer.new(doctor).serializable_hash.to_json
   end
 
+
   def create
-    @doctor = Doctor.new(doctor_params)
-    @doctor.photo = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fmedical-doctor&psig=AOvVaw2hlddqpN7HIZBVqqA0ILWV&ust=1667655781842000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCJjA24XUlPsCFQAAAAAdAAAAABAE' if @doctor.photo.nil?
-    if @doctor.save
+    doctor = Doctor.new(doctor_params)
+    @doctor.photo = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fmedical-doctor&psig=AOvVaw2hlddqpN7HIZBVqqA0ILWV&ust=1667655781842000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCJjA24XUlPsCFQAAAAAdAAAAABAE' if doctor.photo.nil?
+    if doctor.save
       render json: { data: 'Created Doctor Successfully', status: :ok }
     else
-      render json: { data: @doctor.errors.full_messages, status: 'failed' }, status: :unprocessable_entity
+      render json: { data: doctor.errors.full_messages, status: 'failed' }, status: :unprocessable_entity
     end
   end
 
