@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate, only: [:create]
-  before_action :set_user, only: %i[ show update destroy ]
-
   # GET /users
   def index
     @users = User.all
@@ -19,8 +16,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      payload = {user_id: @user_id}
-      token = create_token(payload)
       render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -42,13 +37,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:name, :email, :password)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 end

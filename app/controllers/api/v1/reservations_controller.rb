@@ -12,8 +12,6 @@ class Api::V1::ReservationsController < ApplicationController
     render json: @reservations
   end
 
-
-
   # def create
   #   reservation = Reservation.new(reservation_params)
   #   if reservation.save
@@ -23,7 +21,7 @@ class Api::V1::ReservationsController < ApplicationController
   #   end
   # end
 
-   def create
+  def create
     @reservations = Reservation.new(reservation_params)
     @reservations.user = current_user
     if @reservations.save
@@ -51,7 +49,7 @@ class Api::V1::ReservationsController < ApplicationController
 
   private
 
-  def set_reservation  
+  def set_reservation
     @reservation = current_user.reservations.find(params[:id])
   end
 
