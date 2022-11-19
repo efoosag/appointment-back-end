@@ -1,6 +1,13 @@
-Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+# frozen_string_literal: true
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+Rails.application.routes.draw do
+  resources :users
+  post '/auth/login', to: 'authentication#login'
+
+  namespace :api do
+    namespace :v1 do
+      resources :reservations, only: %i[index create destroy show]
+      resources :doctors, only: %i[index create destroy show]
+    end
+  end
 end
