@@ -1,6 +1,5 @@
 class Api::V1::ReservationsController < ApplicationController
-  # before_action :set_reservation, only: %i[show destroy]
-
+  
   def index
     @reservations = Reservation.joins(:doctor).pluck(
       'reservations.id, doctors.name, reserve_date, city'
@@ -10,7 +9,6 @@ class Api::V1::ReservationsController < ApplicationController
 
    def create
     @reservation = Reservation.new(reservation_params)
-    # @reservations.user = current_user
     if @reservation.save
       render json: { message: 'reservation added', status: :ok }
     else
@@ -29,10 +27,6 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   private
-
-  def set_reservation  
-    @reservation = current_user.reservations.find(params[:id])
-  end
 
   def reservation_params
     params.require(:reservation).permit(:user_id, :doctor_id, :reserve_date, :city)
