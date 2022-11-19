@@ -16,7 +16,7 @@ You can access the Live version and use the API via [this link](https:).
 
 ## Back-End
 
-You can access the front-end of this application via [this link]https://github.com/efoosag/appointment-back-end.git).
+You can access the front-end of this application via [this link](https://github.com/efoosag/appointment-front-end.git).
 
 ## Kanban Board:
 Kanban Board [link](https://github.com/users/efoosag/projects/9)
@@ -59,22 +59,11 @@ To get a local copy up and running, follow these steps:
 rails server
 ```
 
-## Run Tests
-
-- To run tests, Run the following command on your terminal
-
-```
-rake rswag
-```
-
 ## Deployment
 
 [Live link fron-end](https://)
 
 [Live link back-end](https://)
-
-
-
 
 ## Authors
 
