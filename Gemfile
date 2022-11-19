@@ -9,7 +9,6 @@ gem 'rubocop', '~>0.81.0'
 gem 'rails', '~> 7.0.4'
 
 # Use sqlite3 as the database for Active Record
-gem 'jsonapi-serializer'
 gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]
