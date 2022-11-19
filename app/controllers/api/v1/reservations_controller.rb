@@ -1,5 +1,4 @@
 class Api::V1::ReservationsController < ApplicationController
-  
   def index
     @reservations = Reservation.joins(:doctor).pluck(
       'reservations.id, doctors.name, reserve_date, city'
@@ -7,7 +6,7 @@ class Api::V1::ReservationsController < ApplicationController
     render json: @reservations
   end
 
-   def create
+  def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
       render json: { message: 'reservation added', status: :ok }
@@ -15,7 +14,6 @@ class Api::V1::ReservationsController < ApplicationController
       render json: { message: 'reservations not created' }, status: :unprocessable_entity
     end
   end
-
 
   def destroy
     @reservation = Reservation.find(params[:id])

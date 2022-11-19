@@ -11,7 +11,9 @@ class Api::V1::DoctorsController < ApplicationController
 
   def create
     @doctor = Doctor.new(doctor_params)
-    @doctor.photo = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fmedical-doctor&psig=AOvVaw2hlddqpN7HIZBVqqA0ILWV&ust=1667655781842000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCJjA24XUlPsCFQAAAAAdAAAAABAE' if @doctor.photo.nil?
+    if @doctor.photo.nil?
+      @doctor.photo = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fmedical-doctor&psig=AOvVaw2hlddqpN7HIZBVqqA0ILWV&ust=1667655781842000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCJjA24XUlPsCFQAAAAAdAAAAABAE'
+    end
     if @doctor.save
       render json: { data: 'Created Doctor Successfully', status: :ok }
     else
@@ -35,5 +37,5 @@ class Api::V1::DoctorsController < ApplicationController
 
   def doctor_params
     params.require(:doctor).permit(:name, :title, :photo, :biography)
-  end    
+  end
 end
